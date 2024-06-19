@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Menú principal "Fuerza de Ventas" -->
+        <menuitem id="menu_sales_force_dashboard" name="Fuerza de Ventas" action="sale.action_orders" web_icon="gc_sales_force,static/img/sales_force.png" sequence="1" groups="gc_sales_force.group_sales_force_user"/>
+
+        <!-- Menú principal "Ventas" dentro de "Fuerza de Ventas" -->
+        <menuitem id="menu_sales" name="Ventas" parent="menu_sales_force_dashboard" sequence="2"/>
+
+        <!-- Submenú "Pedidos de Ventas" dentro del menú "Ventas" -->
+        <menuitem id="menu_sales_orders" name="Pedidos de Ventas" parent="menu_sales" sequence="1" action="sale.action_orders"/>
+
+        <!-- Submenú "Facturas" dentro del menú "Ventas" -->
+        <menuitem id="menu_sales_invoices" name="Facturas" parent="menu_sales" sequence="2" action="account.action_move_in_invoice_type"/>
+
+        <!-- Submenú "Notas de crédito" dentro del menú "Ventas" -->
+        <menuitem id="menu_sales_credit_notes" name="Notas de crédito" parent="menu_sales" sequence="3" action="account.action_move_out_refund_type"/>
+
+        <!-- Submenú "Pagos" dentro del menú "Ventas" -->
+        <menuitem id="menu_sales_payments" name="Pagos" parent="menu_sales" sequence="4" action="account.action_account_payments"/>
+
+        <!-- Submenú "Clientes" dentro del menú "Ventas" -->
+        <menuitem id="menu_sales_customers" name="Clientes" parent="menu_sales" sequence="5" action="base.action_partner_form"/>
+
+
+        <record id="view_order_form_sales_force" model="ir.ui.view">
+            <field name="name">sale.order.form.sales.force</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- Agregar un archivo externo de JavaScript -->
+                <script type="text/javascript" src="/gc_sales_force/static/src/js/disable_buttons.js"/>
+            </field>
+        </record>
+
+        <!-- Restricciones "Pedidos de Ventas" -->
+<!--         <record id="view_order_form_sales_force" model="ir.ui.view">
+            <field name="name">sale.order.form.sales.force</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@id='create_invoice']" position="attributes">
+                    <attribute name="groups">!gc_sales_force.group_hide_button</attribute>
+                </xpath>
+                <xpath expr="//button[@id='create_invoice_percentage']" position="attributes">
+                    <attribute name="groups">!gc_sales_force.group_hide_button</attribute>
+                </xpath>
+                <xpath expr="//button[@id='send_by_email_primary']" position="attributes">
+                    <attribute name="groups">!gc_sales_force.group_hide_button</attribute>
+                </xpath>
+                <xpath expr="//button[@id='send_proforma_primary']" position="attributes">
+                    <attribute name="groups">!gc_sales_force.group_hide_button</attribute>
+                </xpath>
+                <xpath expr="//button[@id='action_confirm']" position="attributes">
+                    <attribute name="groups">!gc_sales_force.group_hide_button</attribute>
+                </xpath>
+                <xpath expr="//button[@id='send_proforma']" position="attributes">
+                    <attribute name="groups">!gc_sales_force.group_hide_button</attribute>
+                </xpath>
+                <xpath expr="//button[@id='send_by_email']" position="attributes">
+                    <attribute name="groups">!gc_sales_force.group_hide_button</attribute>
+                </xpath>
+            </field>
+        </record>
+ -->
+    </data>
+</odoo>
+
