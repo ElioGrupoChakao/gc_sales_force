@@ -15,8 +15,7 @@
     ],
     'data': [
         'security/sales_force_access.xml',
-        'views/sales.xml',
-
+        'views/gc_sales_force.xml',
     ],
     
     'demo': [],
