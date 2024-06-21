@@ -11,7 +11,8 @@
     'depends' : [
         'base',
         'sale',
-
+        'sale_management',
+        'l10n_ve_full',
     ],
     'data': [
         'security/sales_force_access.xml',

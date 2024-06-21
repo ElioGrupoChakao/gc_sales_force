@@ -1,9 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="1">
-        <!-- Definición de grupo de usuarios -->
+
+        <!-- Grupo Fuerza de Ventas -->
         <record id="group_sales_force_user" model="res.groups">
             <field name="name">Fuerza de Ventas</field>
+        </record>
+
+        <!-- Permisos de acceso -->
+        <!-- Asiento contable -->
+        <record id="account_move_sales_force_user" model="ir.model.access">
+            <field name="name">Asiento contable - Fuerza de Ventas</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Contacto -->
+        <record id="res_partner_sales_force_user" model="ir.model.access">
+            <field name="name">Contacto - Fuerza de Ventas</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Equipo de ventas -->
+        <record id="crm_team_sales_force_user" model="ir.model.access">
+            <field name="name">Equipo de ventas - Fuerza de Ventas</field>
+            <field name="model_id" ref="crm.model_crm_team"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Pagos -->
+        <record id="account_payment_readonly_sales_force_user" model="ir.model.access">
+            <field name="name">Pagos - Fuerza de Ventas</field>
+            <field name="model_id" ref="account.model_account_payment"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Pedido de venta -->
+        <record id="sale_order_sales_force_user" model="ir.model.access">
+            <field name="name">Pedido de venta - Fuerza de Ventas</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Registro al evento -->
+        <record id="event_registration_sales_force_user" model="ir.model.access">
+            <field name="name">Registro al evento - Fuerza de Ventas</field>
+            <field name="model_id" ref="event.model_event_registration"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Transferir -->
+        <record id="stock_picking_sales_force_user" model="ir.model.access">
+            <field name="name">Transferir - Fuerza de Ventas</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Apunte contable -->
+        <record id="account_move_line_sales_force_user" model="ir.model.access">
+            <field name="name">Apunte contable - Fuerza de Ventas</field>
+            <field name="model_id" ref="account.model_account_move_line"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Concepto de retención de ingresos -->
+        <record id="withholding_tax_line_sales_force_user" model="ir.model.access">
+            <field name="name">Concepto de retención de ingresos - Fuerza de Ventas</field>
+            <field name="model_id" ref="l10n_ve_full.model_account_wh_islr_concept"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Línea de pedido de ventas -->
+        <record id="sale_order_line_sales_force_user" model="ir.model.access">
+            <field name="name">Línea pedido de venta - Fuerza de Ventas</field>
+            <field name="model_id" ref="sale.model_sale_order_line"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Movimiento stock -->
+        <record id="stock_move_sales_force_user" model="ir.model.access">
+            <field name="name">Movimiento stock - Fuerza de Ventas</field>
+            <field name="model_id" ref="stock.model_stock_move"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Opciones de Ventas -->
+        <record id="sale_order_option_sales_force_user" model="ir.model.access">
+            <field name="name">Opciones de venta - Fuerza de Ventas</field>
+            <field name="model_id" ref="sale_management.model_sale_order_option"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <!-- Líneas de contabilidad -->
+        <record id="account_move_line_resumen_sales_force_user" model="ir.model.access">
+            <field name="name">Líneas de contabilidad - Fuerza de Ventas</field>
+            <field name="model_id" ref="l10n_ve_full.model_account_move_line_resumen"/>
+            <field name="group_id" ref="group_sales_force_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Reglas de Registro -->
+        <record id="account_move_sales_force_rule" model="ir.rule">
+            <field name="name">Asiento contable - Fuerza de Ventas</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="groups" eval="[(4, ref('group_sales_force_user'))]"/>
+            <field name="domain_force">['|', ('invoice_user_id', '=', user.id), '|', ('create_uid', '=', user.id), '|', ('team_id.user_id', '=', user.id), ('team_id.member_ids.user_id', '=', user.id)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="sale_order_sales_force_rule" model="ir.rule">
+            <field name="name">Pedido de venta - Fuerza de Ventas</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="groups" eval="[(4, ref('group_sales_force_user'))]"/>
+            <field name="domain_force">['|', ('user_id', '=', user.id), ('team_id.user_id', '=', user.id), ('team_id', '!=', False)]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
         </record>
     </data>
 </odoo>
